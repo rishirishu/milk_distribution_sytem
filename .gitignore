@@ -1,83 +1,77 @@
 # =========================
 
-# Python
+# Python / Django
 
 # =========================
 
 **pycache**/
+*.pyc
 *.py[cod]
-
-# =========================
-
-# Virtual Environment
-
-# =========================
 
 venv/
 env/
 .venv/
 
-# =========================
-
-# Environment Variables
-
-# =========================
-
 .env
+db.sqlite3
 
-# =========================
-
-# Django
-
-# =========================
-
-
-# Ignore all migrations (keep **init**.py)
+# Ignore all migrations (keep only **init**.py)
 
 **/migrations/*
 !**/migrations/**init**.py
 
-# Media files (uploads)
+# Media files
 
 appBackend/media/
 
 # =========================
 
-# IDE / Editor
+# React Native (milkDistribution)
+
+# =========================
+
+milkDistribution/node_modules/
+milkDistribution/.expo/
+milkDistribution/.gradle/
+milkDistribution/android/build/
+milkDistribution/ios/build/
+milkDistribution/ios/Pods/
+
+# Logs
+
+milkDistribution/npm-debug.log*
+milkDistribution/yarn-debug.log*
+milkDistribution/yarn-error.log*
+
+# =========================
+
+# IDE / System
 
 # =========================
 
 .vscode/
 .idea/
-
-# =========================
-
-# OS files
-
-# =========================
-
 .DS_Store
 Thumbs.db
 
 # =========================
 
-# Build / cache
+# Build / Misc
 
 # =========================
 
 *.egg-info/
 dist/
 build/
-
-# =========================
-
-# Misc
-
-# =========================
-
 *.tmp
 *.bak
 
+# =========================
 
-__pycache__/
-*.pyc
+# Keep important React files
+
+# =========================
+
+!milkDistribution/package.json
+!milkDistribution/package-lock.json
+!milkDistribution/app.json
