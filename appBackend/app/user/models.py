@@ -16,7 +16,7 @@ class AuditTable(models.Model):
 
 
 class User(AbstractUser,AuditTable):
-    mobile_no = models.CharField(max_length=13,unique=True)
+    mobile_no = models.CharField(max_length=13, unique=True, null=True, blank=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='customer')
 
 

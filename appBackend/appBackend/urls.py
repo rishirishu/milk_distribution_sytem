@@ -19,10 +19,10 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 # views.py
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 def system_health(request):
-    return HttpResponse("Hello, World!")
+    return JsonResponse({"status": "ok"}, status=200)
 
 
 urlpatterns = [
@@ -30,4 +30,5 @@ urlpatterns = [
     path('user/', include('app.user.urls')),
     path('product/', include('app.product.urls')),
     path('health', system_health)
+    
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

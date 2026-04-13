@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .env
 .git
+
+# Ignore Django migration files in Docker build
+*/migrations/*.py
+*/migrations/*.pyc
+!*/migrations/__init__.py

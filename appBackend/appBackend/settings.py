@@ -95,13 +95,16 @@ WSGI_APPLICATION = 'appBackend.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'milkdistribution',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST':'db',
-        'PORT':'3306',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "milk_distribution",
+        "USER": "myuser",
+        "PASSWORD": "mypass",
+        "HOST": "172.31.46.63",   # ✅ EC2 PRIVATE IP
+        "PORT": "3306",
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
