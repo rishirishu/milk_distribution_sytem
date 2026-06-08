@@ -26,7 +26,7 @@ class SignUpViewset(APIView):
 
 class LoginViewset(APIView):
     def post(self,request):
-        username = request.data["mobile_no"]
+        username = request.data["username"]
         password = request.data["password"]
         user = authenticate(username = username,password = password)
         if user:

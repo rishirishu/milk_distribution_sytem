@@ -22,7 +22,7 @@ EXPOSE 8000
 # CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
 # CMD ["sh", "-c", " gunicorn appBackend.wsgi:application --bind 0.0.0.0:8000"]
 CMD ["gunicorn", "appBackend.wsgi:application", \
-     "--bind", "0.0.0.0:8000", \
+    #  "--bind", "0.0.0.0:8000", \
      "--workers", "3", \
      "--threads", "2", \
      "--timeout", "60"]

@@ -12,7 +12,7 @@ class SignupSerializers(serializers.ModelSerializer):
         extra_kwargs = {'username':{'required':False}}
 
     def create(self,validated_data):
-        validated_data.update(username = validated_data["mobile_no"])
+        # validated_data.update(username = validated_data["username"])
         user = get_user_model().objects.create_user(**validated_data)
         return user
 

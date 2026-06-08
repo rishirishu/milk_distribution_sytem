@@ -15,10 +15,10 @@ env/
 .env
 db.sqlite3
 
-# Ignore all migrations (keep only **init**.py)
+# Ignore all migration files
 
-**/migrations/*
-!**/migrations/**init**.py
+**/migrations/*.py
+**/migrations/*.pyc
 
 # Media files
 

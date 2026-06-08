@@ -1,45 +1,96 @@
+# # version: '3.9'
+
+# # services:
+# #   # db:
+# #   #   image: mysql:8.0
+# #   #   container_name: mysql-db
+# #   #   restart: always
+# #   #   environment: 
+# #   #     MYSQL_DATABASE: milkdistribution
+# #   #     MYSQL_ROOT_PASSWORD: root
+# #   #   ports:
+# #   #     - "3306:3306"
+# #   #   volumes:
+# #   #     - mysql_data:/var/lib/mysql
+
+
+# #   backend:
+# #     build: .
+# #     container_name: django-backend  
+# #     command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn appBackend.wsgi:application --bind 0.0.0.0:8000"
+
+# #     ports:
+# #       - "8000:8000"
+
+# #     volumes:
+# #       - .:/app
+    
+# #     # depends_on:
+# #     #   - db
+
+# # volumes:
+# #   mysql_data:
+
 # version: '3.9'
 
 # services:
-#   # db:
-#   #   image: mysql:8.0
-#   #   container_name: mysql-db
-#   #   restart: always
-#   #   environment: 
-#   #     MYSQL_DATABASE: milkdistribution
-#   #     MYSQL_ROOT_PASSWORD: root
-#   #   ports:
-#   #     - "3306:3306"
-#   #   volumes:
-#   #     - mysql_data:/var/lib/mysql
-
-
 #   backend:
 #     build: .
-#     container_name: django-backend  
-#     command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn appBackend.wsgi:application --bind 0.0.0.0:8000"
+#     image: milk_distribution_backend:latest
+#     container_name: django-backend
 
 #     ports:
 #       - "8000:8000"
 
-#     volumes:
-#       - .:/app
-    
-#     # depends_on:
-#     #   - db
+#     restart: always
 
-# volumes:
-#   mysql_data:
 
 version: '3.9'
 
 services:
-  backend:
-    build: .
-    image: milk_distribution_backend:latest
-    container_name: django-backend
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
 
     ports:
-      - "8000:8000"
+      - "${DB_PORT}:3306"
 
-    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    command: --default-authentication-plugin=mysql_native_password
+
+  # db:
+  #   image: mysql:8.0
+  #   container_name: mysql-db
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: milkdistribution
+  #     MYSQL_USER: rishi
+  #     MYSQL_PASSWORD: rishi123
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+
+  # backend:
+  #   build: .
+  #   image: milk_distribution_backend:latest
+  #   container_name: django-backend
+
+  #   ports:
+  #     - "8000:8000"
+
+  #   restart: always
+
+volumes:
+  mysql_data:
